@@ -23,8 +23,8 @@ export function validate(images) {
         /([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))-([01][0-9]|2[0-4])[0-5][0-9]/g
       );
 
-    if (match && match.join("-") === name) {
-      valid.push({
+      if (match && match.length >= 2) {
+        valid.push({
         url: image,
         time: match,
       });
