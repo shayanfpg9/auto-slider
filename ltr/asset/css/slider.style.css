@@ -364,18 +364,22 @@ section.slider-btn-navbar {
 .fullscreen-body {
   overflow: hidden !important;
 }
-
 .filter {
-  filter: blur(5px);
+  width: 105vw !important;
+  height: 105vh !important;
+  right: -2.5vw;
+  top: -2.5vh !important;
+
+  filter: blur(3px);
 }
 
 .filter::after {
   content: "";
-  width: 100vw;
-  height: 100vh;
+  width: 110vw;
+  height: 110vh;
   background-color: #3a3a3a5b;
   position: fixed;
-  top: 0;
-  left: 0;
+  bottom: -5vh;
+  left: -5vw;
   z-index: 101;
 }
