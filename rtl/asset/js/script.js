@@ -399,6 +399,6 @@ setInterval(() => {
     if (ActiveIndex + 1 === slides.length) {
       showSlide(0);
     } else {
-      next.click();
+      prev.click();
     }
 }, 10000);
