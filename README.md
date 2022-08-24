@@ -15,7 +15,7 @@ add file into ``posters`` folder with this name format
 
 the first date is the start time of the event and the second date is the end time of the event
 
-you can add perfix of suffix too
+you can add perfix or suffix too
 
 ## images
 
