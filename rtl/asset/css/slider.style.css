@@ -245,6 +245,8 @@ section.slider > section.slider-navbar > nav.slider-nav.active {
   height: 50px;
 
   cursor: pointer;
+
+  transition: opacity .5s linear;
 }
 
 .fullscreen > .slider-arrow {
@@ -292,6 +294,10 @@ section.slider > section.slider-navbar > nav.slider-nav.active {
 
 .arrow-prev {
   right: 10px;
+}
+
+.slider-arrow.disabled {
+  opacity: 0;
 }
 
 section.slider-btn-navbar {

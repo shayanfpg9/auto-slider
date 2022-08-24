@@ -207,8 +207,19 @@ function showSlide(index) {
   slides[ActiveIndex].classList.add("active");
   navs[ActiveIndex].classList.add("active");
 
-  if (slides[ActiveIndex + 1]) slides[ActiveIndex + 1].classList.add("next");
-  if (slides[ActiveIndex - 1]) slides[ActiveIndex - 1].classList.add("next");
+  if (slides[ActiveIndex + 1]) {
+    slides[ActiveIndex + 1].classList.add("next");
+    next.classList.remove("disabled");
+  } else {
+    next.classList.add("disabled");
+  }
+
+  if (slides[ActiveIndex - 1]) {
+    slides[ActiveIndex - 1].classList.add("next");
+    prev.classList.remove("disabled");
+  } else {
+    prev.classList.add("disabled");
+  }
 
   if (slider.classList.contains("fullscreen")) {
     const downloadBtn = $(".btn.download-btn"),
@@ -382,3 +393,12 @@ function outFullscreen(parent) {
   parent.removeChild($("section.slider-btn-navbar"));
   $("html").classList.remove("fullscreen-body");
 }
+
+setInterval(() => {
+  if (!slider.classList.contains("fullscreen"))
+    if (ActiveIndex + 1 === slides.length) {
+      showSlide(0);
+    } else {
+      next.click();
+    }
+}, 10000);
