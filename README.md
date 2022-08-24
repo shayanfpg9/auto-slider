@@ -10,7 +10,7 @@ so I made this slider with language format rtl and lrt.
 
 ## Adding slide
 
-add file into poster folder with this name format
+add file into posters folder with this name format
 `yyyy-mm-dd-hhmm-yyyy-mm-dd-hhmm`
 
 the first date is the start time of the event and the second date is the end time of the event
