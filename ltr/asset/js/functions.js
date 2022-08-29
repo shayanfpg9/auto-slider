@@ -23,8 +23,8 @@ export function validate(images) {
         /([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))-([01][0-9]|2[0-4])[0-5][0-9]/g
       );
 
-      if (match && match.length >= 2) {
-        valid.push({
+    if (match && match.length >= 2) {
+      valid.push({
         url: image,
         time: match,
       });
@@ -63,22 +63,7 @@ export function sort(array) {
   array.sort(srt);
 
   if (array.length > 7) {
-    const more = array.length - 7;
-
-    if (more % 2 == 0) {
-      array.filter((val, i) => {
-        if (i < array.length - more / 2 || i + 1 > more / 2) return val;
-      });
-    } else {
-      if ((more - 1) % 2 != 0) {
-        array.splice(0, 1);
-      } else {
-        array.filter((val, i) => {
-          if (i < array.length - (more - 1) / 2 || i + 1 > (more - 1) / 2 + 1)
-            return val;
-        });
-      }
-    }
+    array = deleteSlides(array);
   }
 
   return array;
@@ -100,8 +85,31 @@ export function isElementInViewport(el) {
   );
 }
 
-export function getTime(time  = Date.now()){
-  return [time.getFullYear(), time.getMonth(), time.getDate()].join("-") +
-  " " +
-  [time.getHours(), time.getMinutes()].join(":")
+export function getTime(time = Date.now()) {
+  return (
+    [time.getFullYear(), time.getMonth(), time.getDate()].join("-") +
+    " " +
+    [time.getHours(), time.getMinutes()].join(":")
+  );
+}
+
+function deleteSlides(slides) {
+  let more = slides.length - 7;
+  const result = [];
+
+  slides.reverse();
+
+  slides.forEach((slide) => {
+    if (slide.live && more) {
+      result.push(slide);
+    } else if (!more) {
+      result.push(slide);
+    } else {
+      more--;
+    }
+  });
+
+  result.reverse();
+
+  return result;
 }

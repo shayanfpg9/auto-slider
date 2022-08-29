@@ -10,7 +10,7 @@ const slider = $("section.slider", (els) => {
   navs = [],
   next = document.createElement("nav"),
   prev = document.createElement("nav"),
-  timeD = 500;
+  timeD = 550;
 
 let ActiveIndex = 0,
   imagesInfo = [];
@@ -101,6 +101,7 @@ fetch("./images.php")
       if (slides.length % 2 != 0) {
         showSlide((slides.length + 1) / 2 - 1);
       } else {
+        showSlide((slides.length - 2) / 2);
       }
     }
     next.addEventListener("click", () => {
@@ -237,7 +238,7 @@ function showSlide(index) {
   }
 }
 
-function haveLive(array, index = false , last = false) {
+function haveLive(array, index = false, last = false) {
   let result = false;
 
   array.forEach((item, i) => {

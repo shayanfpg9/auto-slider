@@ -10,23 +10,21 @@ const slider = $("section.slider", (els) => {
   navs = [],
   next = document.createElement("nav"),
   prev = document.createElement("nav"),
-  timeD = 500;
+  timeD = 550;
 
 let ActiveIndex = 0,
   imagesInfo = [];
 
 next.classList.add("slider-arrow", "arrow-next");
 prev.classList.add("slider-arrow", "arrow-prev");
-next.setAttribute("role","button")
-prev.setAttribute("role","button")
+next.setAttribute("role", "button");
+prev.setAttribute("role", "button");
 
 fetch("./images.php")
   .then((req) => req.json())
   .then((imgs) => {
     let images = validate(imgs);
     images = sort(images);
-
-    // images.reverse();
 
     const navbar = document.createElement("section");
 
@@ -46,7 +44,7 @@ fetch("./images.php")
       slides.push(slide);
       navs.push(nav);
 
-      nav.setAttribute("role", "navigation")
+      nav.setAttribute("role", "navigation");
 
       slide.style.backgroundImage = `url(${image.url})`;
       slide.innerHTML += `
@@ -100,6 +98,7 @@ fetch("./images.php")
       if (slides.length % 2 != 0) {
         showSlide((slides.length + 1) / 2 - 1);
       } else {
+        showSlide((slides.length - 2) / 2);
       }
     }
     next.addEventListener("click", () => {
@@ -236,7 +235,7 @@ function showSlide(index) {
   }
 }
 
-function haveLive(array, index = false , last = false) {
+function haveLive(array, index = false, last = false) {
   let result = false;
 
   array.forEach((item, i) => {
