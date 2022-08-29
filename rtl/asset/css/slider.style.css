@@ -119,6 +119,10 @@ section.slider:not(.fullscreen)::after {
   align-items: flex-start;
 }
 
+.slider:not(.fullscreen) .slider-inner{
+  padding: 0 calc(50vw + 30px);
+}
+
 .slider-inner > .slider-item {
   float: left;
   min-width: 14rem;
